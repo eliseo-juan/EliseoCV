@@ -1,5 +1,5 @@
 plugins {
-    id("com.android.application")
+    id("com.android.library")
     id("kotlin-android")
     id("kotlin-android-extensions")
 }
@@ -8,7 +8,6 @@ android {
     compileSdkVersion(AndroidConfig.COMPILE_SDK_VERSION)
 
     defaultConfig {
-        applicationId = AndroidConfig.APPLICATION_ID
         minSdkVersion(AndroidConfig.MIN_SDK_VERSION)
         targetSdkVersion(AndroidConfig.TARGET_SDK_VERSION)
         versionCode = AndroidConfig.VERSION_CODE
@@ -17,14 +16,6 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
     }
-
-    buildTypes {
-        getByName("release") {
-            isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
-        }
-    }
-
 }
 
 dependencies {
@@ -34,7 +25,6 @@ dependencies {
     implementation(LibraryDependency.ANDROIDX_APPCOMPAT)
 
     implementation(LibraryDependency.FRAGMENT_KTX)
-    implementation(LibraryDependency.LIFECYCLE_EXTENSIONS)
     implementation(LibraryDependency.LIFECYCLE_VIEW_MODEL_KTX)
     implementation(LibraryDependency.LIFECYCLE_RUNTIME_KTX)
 

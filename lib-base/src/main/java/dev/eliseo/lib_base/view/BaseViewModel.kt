@@ -6,13 +6,22 @@ import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.channels.ReceiveChannel
 
-abstract class BaseViewModel<VS, VC> : ViewModel() {
+abstract class BaseViewModel<VS, VE> : ViewModel() {
 
-    protected val _viewState = MutableLiveData<VS>()
+    private val _viewState = MutableLiveData<VS>()
     val viewState: LiveData<VS>
         get() = _viewState
 
-    protected val _viewChannel = Channel<VC>()
-    val viewChannel: ReceiveChannel<VC>
+    private val _viewChannel = Channel<VE>()
+    val viewChannel: ReceiveChannel<VE>
         get() = _viewChannel
+
+    protected fun updateViewState(update: VS?.() -> VS) {
+        val newState = update(_viewState.value)
+        _viewState.value = newState
+    }
+
+    protected suspend fun sendViewEvent(viewEvent: VE) {
+        _viewChannel.send(viewEvent)
+    }
 }

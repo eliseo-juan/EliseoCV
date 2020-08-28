@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "868694488965",
+    "firebase_url": "https://eliseocv-cbf7b.firebaseio.com",
+    "project_id": "eliseocv-cbf7b",
+    "storage_bucket": "eliseocv-cbf7b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:868694488965:android:a5ba4d7da71152360436ec",
+        "android_client_info": {
+          "package_name": "dev.eliseo.cv"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "868694488965-42n5c017on1slvitv22k6k42mhuhtp66.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARPBxtNWjICn92Sb4zAT11M_DQ9y8-fiM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "868694488965-42n5c017on1slvitv22k6k42mhuhtp66.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
