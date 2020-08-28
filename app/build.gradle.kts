@@ -33,6 +33,7 @@ android {
 
 dependencies {
     api(project(":lib-base"))
+    api(project(":app:domain"))
 
     implementation(LibraryDependency.KOTLIN)
 

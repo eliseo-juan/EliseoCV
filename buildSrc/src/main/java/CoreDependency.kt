@@ -9,6 +9,3 @@ object CoreDependency {
     const val KOTLIN_GRADLE_PLUGIN = "org.jetbrains.kotlin:kotlin-gradle-plugin:${CoreDependencyVersion.KOTLIN_VERSION}"
     const val GOOGLE_SERVICES_GRADLE_PLUGIN = "com.google.gms:google-services:${CoreDependencyVersion.GOOGLE_SERVICES_GRADLE_VERSION}"
 }
-
-
-
