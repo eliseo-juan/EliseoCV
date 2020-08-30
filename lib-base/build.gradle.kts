@@ -1,3 +1,5 @@
+import dev.eliseo.cv.buildsrc.Libs
+
 plugins {
     id("com.android.library")
     id("kotlin-android")
@@ -19,20 +21,17 @@ android {
 }
 
 dependencies {
-    implementation(LibraryDependency.KOTLIN)
+    implementation(Libs.Kotlin.stdlib)
 
-    implementation(LibraryDependency.ANDROIDX_CORE)
-    implementation(LibraryDependency.ANDROIDX_APPCOMPAT)
+    implementation(Libs.AndroidX.coreKtx)
+    implementation(Libs.AndroidX.appCompat)
 
-    implementation(LibraryDependency.FRAGMENT_KTX)
-    implementation(LibraryDependency.LIFECYCLE_VIEW_MODEL_KTX)
-    implementation(LibraryDependency.LIFECYCLE_RUNTIME_KTX)
+    implementation(Libs.AndroidX.fragmentKtx)
+    implementation(Libs.Lifecycle.viewmodel)
+    implementation(Libs.Lifecycle.runtimeKtx)
+    implementation(Libs.Lifecycle.livedata)
 
-    implementation(LibraryDependency.MATERIAL)
+    implementation(Libs.material)
 
-    implementation(LibraryDependency.COROUTINES_ANDROID)
-
-    testImplementation(TestLibraryDependency.JUNIT)
-    androidTestImplementation(TestLibraryDependency.JUNIT_EXT)
-    androidTestImplementation(TestLibraryDependency.ESPRESSO_CORE)
+    implementation(Libs.Coroutines.android)
 }

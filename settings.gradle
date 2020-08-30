@@ -1,4 +1,3 @@
-rootProject.name='EliseoCV'
 include ':app'
 include ':lib-base'
-include ':app:domain'
+rootProject.name='EliseoCV'

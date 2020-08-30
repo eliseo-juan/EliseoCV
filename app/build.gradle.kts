@@ -1,3 +1,5 @@
+import dev.eliseo.cv.buildsrc.Libs
+
 plugins {
     id("com.android.application")
     id("kotlin-android")
@@ -29,37 +31,56 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
      }
+
+     kotlinOptions {
+         jvmTarget = "1.8"
+         allWarningsAsErrors = true
+     }
+
+     buildFeatures {
+         compose = true
+     }
+
+     composeOptions {
+         kotlinCompilerVersion = Libs.Kotlin.version
+         kotlinCompilerExtensionVersion = Libs.AndroidX.Compose.version
+     }
 }
 
 dependencies {
     api(project(":lib-base"))
-    api(project(":app:domain"))
 
-    implementation(LibraryDependency.KOTLIN)
+    implementation(Libs.Kotlin.stdlib)
 
-    implementation(LibraryDependency.KOIN_CORE)
-    implementation(LibraryDependency.KOIN_ANDROIDX)
-    implementation(LibraryDependency.KOIN_VIEWMODEL)
+    implementation(Libs.Koin.core)
+    implementation(Libs.Koin.androidX)
+    implementation(Libs.Koin.viewModel)
 
-    implementation(LibraryDependency.FRAGMENT_KTX)
-    implementation(LibraryDependency.LIFECYCLE_VIEW_MODEL_KTX)
-    implementation(LibraryDependency.LIFECYCLE_RUNTIME_KTX)
+    implementation(Libs.Lifecycle.viewmodel)
+    implementation(Libs.Lifecycle.runtimeKtx)
 
-    implementation(LibraryDependency.ANDROIDX_CORE)
-    implementation(LibraryDependency.ANDROIDX_APPCOMPAT)
-    implementation(LibraryDependency.RECYCLER_VIEW)
-    implementation(LibraryDependency.ANDROIDX_VIEWPAGER_2)
-    implementation(LibraryDependency.ANDROIDX_CONSTRAINT_LAYOUT)
+    implementation(Libs.AndroidX.coreKtx)
+    implementation(Libs.AndroidX.appCompat)
+    implementation(Libs.AndroidX.recyclerView)
+    implementation(Libs.AndroidX.viewPager2)
+    implementation(Libs.AndroidX.constraintLayout)
 
-    implementation(LibraryDependency.MATERIAL)
-    implementation(LibraryDependency.FIREBASE_ANALYTICS)
-    implementation(LibraryDependency.FIREBASE_DATABASE)
+    implementation(Libs.AndroidX.Compose.core)
+    implementation(Libs.AndroidX.Compose.layout)
+    implementation(Libs.AndroidX.Compose.material)
+    implementation(Libs.AndroidX.Compose.materialIconsExtended)
+    implementation(Libs.AndroidX.Compose.tooling)
+    implementation(Libs.AndroidX.Compose.runtime)
+    implementation(Libs.AndroidX.Compose.runtimeLivedata)
 
-    implementation(LibraryDependency.COROUTINES_ANDROID)
+    implementation(Libs.AndroidX.fragmentKtx)
 
-    implementation(LibraryDependency.MOSHI)
+    implementation(Libs.material)
 
-    testImplementation(TestLibraryDependency.JUNIT)
-    androidTestImplementation(TestLibraryDependency.JUNIT_EXT)
-    androidTestImplementation(TestLibraryDependency.ESPRESSO_CORE)
+    implementation(Libs.Firebase.analytics)
+    implementation(Libs.Firebase.database)
+
+    implementation(Libs.Coroutines.android)
+
+    implementation(Libs.Moshi.core)
 }
