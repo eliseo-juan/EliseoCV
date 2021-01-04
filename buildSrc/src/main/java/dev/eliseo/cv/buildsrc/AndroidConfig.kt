@@ -1,3 +1,5 @@
+package dev.eliseo.cv.buildsrc
+
 object AndroidConfig {
     const val COMPILE_SDK_VERSION = 29
     const val BUILD_TOOLS_VERSION = "29.0.3"

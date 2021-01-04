@@ -1,3 +1,3 @@
-include ':app'
 include ':lib-base'
-rootProject.name='EliseoCV'
+include ':app'
+rootProject.name = "EliseoCV"

@@ -1,4 +1,6 @@
+import dev.eliseo.cv.buildsrc.AndroidConfig
 import dev.eliseo.cv.buildsrc.Libs
+import dev.eliseo.cv.buildsrc.ModuleDependency
 
 plugins {
     id("com.android.application")
@@ -16,7 +18,7 @@ android {
         versionCode = AndroidConfig.VERSION_CODE
         versionName = AndroidConfig.VERSION_NAME
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = AndroidConfig.TEST_INSTRUMENTATION_RUNNER
     }
 
     buildTypes {
@@ -26,23 +28,18 @@ android {
         }
     }
 
-     compileOptions {
+    compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
-     }
+    }
 
-     kotlinOptions {
-         jvmTarget = JavaVersion.VERSION_1_8.toString()
-         allWarningsAsErrors = false
-     }
-
-     buildFeatures {
-         viewBinding = true
-     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
-    api(project(":lib-base"))
+    api(project(ModuleDependency.BASE))
 
     implementation(Libs.Kotlin.stdlib)
     implementation(Libs.Kotlin.reflect)

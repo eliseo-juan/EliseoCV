@@ -6,13 +6,13 @@ plugins {
 }
 
 android {
-    compileSdkVersion(AndroidConfig.COMPILE_SDK_VERSION)
+    compileSdkVersion(dev.eliseo.cv.buildsrc.AndroidConfig.COMPILE_SDK_VERSION)
 
     defaultConfig {
-        minSdkVersion(AndroidConfig.MIN_SDK_VERSION)
-        targetSdkVersion(AndroidConfig.TARGET_SDK_VERSION)
-        versionCode = AndroidConfig.VERSION_CODE
-        versionName = AndroidConfig.VERSION_NAME
+        minSdkVersion(dev.eliseo.cv.buildsrc.AndroidConfig.MIN_SDK_VERSION)
+        targetSdkVersion(dev.eliseo.cv.buildsrc.AndroidConfig.TARGET_SDK_VERSION)
+        versionCode = dev.eliseo.cv.buildsrc.AndroidConfig.VERSION_CODE
+        versionName = dev.eliseo.cv.buildsrc.AndroidConfig.VERSION_NAME
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
