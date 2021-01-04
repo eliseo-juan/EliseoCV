@@ -5,15 +5,12 @@ object Versions {
 }
 
 object Libs {
-    const val androidGradlePlugin = "com.android.tools.build:gradle:4.2.0-alpha08"
-    const val googleServicesGradlePlugin = "com.google.gms:google-services:4.3.3"
-
 
     object Kotlin {
-        const val version = "1.4.0"
-        const val stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$version"
+        const val version = "1.4.10"
+        const val stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$version"
+        const val reflect = "org.jetbrains.kotlin:kotlin-reflect:$version"
         const val gradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$version"
-        const val extensions = "org.jetbrains.kotlin:kotlin-android-extensions:$version"
     }
 
     object Coroutines {
@@ -46,7 +43,7 @@ object Libs {
     }
 
     object Moshi {
-        const val core = "com.squareup.moshi:moshi-kotlin:1.9.3"
+        const val core = "com.squareup.moshi:moshi-kotlin:1.11.0"
         const val converter = "com.squareup.retrofit2:converter-moshi:${Retrofit.retrofit_version}"
     }
 
@@ -69,7 +66,7 @@ object Libs {
         const val fragmentKtx = "androidx.fragment:fragment-ktx:1.1.0"
 
         object Compose {
-            const val version = "1.0.0-alpha01"
+            const val version = "1.0.0-alpha07"
             const val core = "androidx.compose.ui:ui:$version"
             const val foundation = "androidx.compose.foundation:foundation:$version"
             const val layout = "androidx.compose.foundation:foundation-layout:$version"

@@ -1,31 +1,35 @@
 package dev.eliseo.cv.view.home
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import dev.eliseo.cv.R
+import dev.eliseo.cv.databinding.HomeFragmentBinding
+import dev.eliseo.lib_base.view.BaseViewModelFragment
+import org.koin.androidx.viewmodel.scope.viewModel
+import org.koin.androidx.scope.lifecycleScope as koinScope
 
-class HomeFragment : Fragment() {
+class HomeFragment : BaseViewModelFragment<HomeFragmentBinding, HomeViewModel.ViewState, HomeViewModel.ViewEvent, HomeViewModel>() {
 
     companion object {
         fun newInstance() = HomeFragment()
     }
 
-    private lateinit var viewModel: HomeViewModel
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.home_fragment, container, false)
+    override val viewBinding: (LayoutInflater, ViewGroup?) -> HomeFragmentBinding = { layoutInflater, viewGroup ->
+        HomeFragmentBinding.inflate(layoutInflater, viewGroup, false)
     }
+
+    override val viewModel: HomeViewModel by koinScope.viewModel(this)
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
         // TODO: Use the ViewModel
+    }
+
+    override fun renderViewState(viewState: HomeViewModel.ViewState) {
+        TODO("Not yet implemented")
+    }
+
+    override fun handleViewChannel(viewChannel: HomeViewModel.ViewEvent) {
+        TODO("Not yet implemented")
     }
 }

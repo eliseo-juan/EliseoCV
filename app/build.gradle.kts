@@ -3,7 +3,6 @@ import dev.eliseo.cv.buildsrc.Libs
 plugins {
     id("com.android.application")
     id("kotlin-android")
-    id("kotlin-android-extensions")
     id("com.google.gms.google-services")
 }
 
@@ -33,17 +32,12 @@ android {
      }
 
      kotlinOptions {
-         jvmTarget = "1.8"
-         allWarningsAsErrors = true
+         jvmTarget = JavaVersion.VERSION_1_8.toString()
+         allWarningsAsErrors = false
      }
 
      buildFeatures {
-         compose = true
-     }
-
-     composeOptions {
-         kotlinCompilerVersion = Libs.Kotlin.version
-         kotlinCompilerExtensionVersion = Libs.AndroidX.Compose.version
+         viewBinding = true
      }
 }
 
@@ -51,6 +45,7 @@ dependencies {
     api(project(":lib-base"))
 
     implementation(Libs.Kotlin.stdlib)
+    implementation(Libs.Kotlin.reflect)
 
     implementation(Libs.Koin.core)
     implementation(Libs.Koin.androidX)
@@ -64,14 +59,6 @@ dependencies {
     implementation(Libs.AndroidX.recyclerView)
     implementation(Libs.AndroidX.viewPager2)
     implementation(Libs.AndroidX.constraintLayout)
-
-    implementation(Libs.AndroidX.Compose.core)
-    implementation(Libs.AndroidX.Compose.layout)
-    implementation(Libs.AndroidX.Compose.material)
-    implementation(Libs.AndroidX.Compose.materialIconsExtended)
-    implementation(Libs.AndroidX.Compose.tooling)
-    implementation(Libs.AndroidX.Compose.runtime)
-    implementation(Libs.AndroidX.Compose.runtimeLivedata)
 
     implementation(Libs.AndroidX.fragmentKtx)
 

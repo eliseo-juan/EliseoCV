@@ -8,16 +8,20 @@ import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
+import androidx.viewbinding.ViewBinding
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.consumeAsFlow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 
-abstract class BaseViewModelFragment<VS, VC, VM : BaseViewModel<VS, VC>> : Fragment() {
+abstract class BaseViewModelFragment<B : ViewBinding, VS, VC, VM : BaseViewModel<VS, VC>> : Fragment() {
 
-    @get:LayoutRes
-    protected abstract val layoutResId: Int
+    abstract val viewBinding: (LayoutInflater, ViewGroup?) -> B
+
+    private var _binding: B? = null
+
+    protected val binding: B get() = _binding!!
 
     protected abstract val viewModel: VM
 
@@ -35,14 +39,21 @@ abstract class BaseViewModelFragment<VS, VC, VM : BaseViewModel<VS, VC>> : Fragm
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View = inflater.inflate(layoutResId, container, false)
+    ): View {
+        _binding = viewBinding(inflater, container)
+        return binding.root
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.viewState.observe(viewLifecycleOwner, Observer { renderViewState(it) })
+        viewModel.viewState.observe(viewLifecycleOwner, { renderViewState(it) })
     }
 
     protected abstract fun renderViewState(viewState: VS)
     protected abstract fun handleViewChannel(viewChannel: VC)
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }
